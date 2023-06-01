@@ -3,7 +3,7 @@ import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
 import Items from "../../Shared/Items/Items";
 
 const FromOurMenu = () => {
-  const [popularMenu, setPopularMenu] = useState({});
+  const [popularMenu, setPopularMenu] = useState(null);
   useEffect(() => {
     fetch("/data/menu.json")
       .then((res) => res.json())
@@ -22,9 +22,10 @@ const FromOurMenu = () => {
         head={"FROM OUR MENU"}
       />
       <div className="grid grid-cols-2 gap-8">
-        {popularMenu.map((item) => (
-          <Items key={item._id} item={item} />
-        ))}
+        {popularMenu &&
+          popularMenu.map((item) => (
+            <Items key={item._id} item={item} />
+          ))}
       </div>
       <div className="text-center">
         <button className="btn border-none border-b-2 mt-12">

@@ -33,28 +33,29 @@ const ChefRecommended = () => {
           },
         }}
       >
-        {offeredItem.map((item) => (
-          <SwiperSlide key={item._id}>
-            <div className="card w-96 h-96 bg-base-100 shadow-xl">
-              <figure className="w-full h-48 pt-10">
-                <img
-                  src={item.image}
-                  className="rounded-xl 
+        {offeredItem &&
+          offeredItem.map((item) => (
+            <SwiperSlide key={item._id}>
+              <div className="card w-96 h-96 bg-base-100 shadow-xl">
+                <figure className="w-full h-48 pt-10">
+                  <img
+                    src={item.image}
+                    className="rounded-xl 
                 "
-                />
-              </figure>
-              <div className="card-body items-center text-center">
-                <h2 className="card-title">{item.name}</h2>
-                <p>{item.recipe}</p>
-                <div className="card-actions">
-                  <button className="btn btn-primary">
-                    Add to Cart
-                  </button>
+                  />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title">{item.name}</h2>
+                  <p>{item.recipe}</p>
+                  <div className="card-actions">
+                    <button className="btn btn-primary">
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </div>
   );

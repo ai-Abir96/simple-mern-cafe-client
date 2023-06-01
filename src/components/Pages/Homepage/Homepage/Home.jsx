@@ -4,6 +4,8 @@ import Banner from "../Banner/Banner";
 import CallSection from "../CallSection/CallSection";
 import FromOurMenu from "../FromOurMenu/FromOurMenu";
 import OrderSection from "../OrderSection/OrderSection";
+import Sponsored from "../Sponsored/Sponsored";
+import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -15,6 +17,10 @@ const Home = () => {
         <FromOurMenu />
         <CallSection />
         <ChefRecommended />
+      </div>
+      <Sponsored />
+      <div className="lg:px-[300px] px-[10px]">
+        <Testimonial />
       </div>
     </div>
   );

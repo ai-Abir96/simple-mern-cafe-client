@@ -4,9 +4,9 @@ const SectionHeading = ({ headTop, head }) => {
       <p className=" text-[#D99904] font-normal italic text-xl">
         ---{headTop}---
       </p>
-      <hr className=" border-t-4 mt-[16px]" />
+      <hr className=" border-t-4 mt-[16px] w-1/4 m-auto" />
       <h1 className="my-4 font-normal text-5xl uppercase">{head}</h1>
-      <hr className=" border-t-4" />
+      <hr className=" border-t-4 w-1/4 m-auto" />
     </div>
   );
 };
