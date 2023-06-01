@@ -3,7 +3,7 @@ import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
 import Items from "../../Shared/Items/Items";
 
 const FromOurMenu = () => {
-  const [popularMenu, setPopularMenu] = useState(null);
+  const [popularMenu, setPopularMenu] = useState({});
   useEffect(() => {
     fetch("/data/menu.json")
       .then((res) => res.json())
@@ -14,7 +14,7 @@ const FromOurMenu = () => {
         setPopularMenu(populerItem);
       });
   }, []);
-
+  console.log(popularMenu);
   return (
     <div>
       <SectionHeading
