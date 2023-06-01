@@ -2,17 +2,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
 const OrderSection = () => {
   return (
-    <div className=" lg:px-[300px] px-[10px] my-[90px]">
-      <div className=" text-center mb-[48px] ">
-        <p className=" text-[#D99904] font-normal italic text-xl">
-          ---From 11:00am to 10:00pm---
-        </p>
-        <hr className=" border-t-4 mt-[16px]" />
-        <h1 className="my-4 font-normal text-5xl">ORDER ONLINE</h1>
-        <hr className=" border-t-4" />
-      </div>
+    <div className="  my-[90px]">
+      <SectionHeading
+        headTop={"From 11:00am to 10:00pm"}
+        head={"ORDER ONLINE"}
+      />
       <Swiper
         slidesPerView={1}
         spaceBetween={0}
