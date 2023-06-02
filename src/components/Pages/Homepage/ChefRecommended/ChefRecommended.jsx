@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SectionHeading from "../Shared/SectionHeading/SectionHeading";
+import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
 import { SwiperSlide, Swiper } from "swiper/react";
 
 const ChefRecommended = () => {

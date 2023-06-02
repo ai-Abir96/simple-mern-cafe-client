@@ -1,4 +1,4 @@
-import ChefRecommended from "../../ChefRecommended/ChefRecommended";
+import ChefRecommended from "../ChefRecommended/ChefRecommended";
 import AboutCafe from "../AboutCafe/AboutCafe";
 import Banner from "../Banner/Banner";
 import CallSection from "../CallSection/CallSection";

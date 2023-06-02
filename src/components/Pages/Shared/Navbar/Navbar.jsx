@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <div className=" px-[55px] py-5 navbar fixed z-10 bg-opacity-20 bg-slate-900 text-white">
@@ -24,7 +26,7 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <NavLink> Menu</NavLink>
             </li>
             <li tabIndex={0}>
               <a className="justify-between">
@@ -53,12 +55,12 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <NavLink className="normal-case text-xl">Bristo Boss</NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <NavLink to="/menu">Menu</NavLink>
           </li>
           <li tabIndex={0}>
             <a>
