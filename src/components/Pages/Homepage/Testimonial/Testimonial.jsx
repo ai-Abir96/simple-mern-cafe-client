@@ -9,13 +9,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Testimonial = () => {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("/data/reviews.json")
+    fetch("https://bristo-server-ai-abir96.vercel.app/reviews")
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        setReviews(result);
+        setReviews(result.reviewsData);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }, []);
 
@@ -25,12 +28,7 @@ const Testimonial = () => {
         headTop={"What Our Clients Say"}
         head={"testimonials"}
       />
-      <Swiper
-        rewind={true}
-        navigation={true}
-        modules={[Navigation]}
-        className="mySwiper"
-      >
+      <Swiper rewind={true} navigation={true} modules={[Navigation]}>
         {reviews &&
           reviews.map((review) => (
             <div key={review._id}>

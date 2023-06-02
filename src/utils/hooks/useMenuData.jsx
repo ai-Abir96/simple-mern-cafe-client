@@ -5,10 +5,11 @@ export const useMenuData = (item) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/data/menu.json")
+    fetch("https://bristo-server-ai-abir96.vercel.app/menu")
       .then((res) => res.json())
       .then((result) => {
-        const filteredItem = result.filter(
+        console.log(result);
+        const filteredItem = result.menuData.filter(
           (r) => r.category === item
         );
         setMenuItems(filteredItem);
@@ -16,8 +17,6 @@ export const useMenuData = (item) => {
       });
   }, [item]);
 
-  if (isLoading) {
-    return <div>Laoding ... </div>;
-  }
-  return menuItems;
+  console.log(menuItems);
+  return { menuItems, isLoading };
 };

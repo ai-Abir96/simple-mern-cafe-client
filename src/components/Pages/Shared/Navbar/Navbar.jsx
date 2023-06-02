@@ -1,6 +1,17 @@
 import { NavLink } from "react-router-dom";
+import useAuth from "../../../../utils/hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const handleLogout = () => {
+    logout().then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Logged Out Successful",
+      });
+    });
+  };
   return (
     <div className=" px-[55px] py-5 navbar fixed z-10 bg-opacity-20 bg-slate-900 text-white">
       <div className="navbar-start">
@@ -26,7 +37,16 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <NavLink> Menu</NavLink>
+              <NavLink to="/menu"> Menu</NavLink>
+            </li>
+            <li>
+              <NavLink to="/shop"> Our Shop</NavLink>
+            </li>
+            <li>
+              <NavLink to="/login"> Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register"> Register</NavLink>
             </li>
             <li tabIndex={0}>
               <a className="justify-between">
@@ -60,7 +80,22 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <NavLink to="/menu">Menu</NavLink>
+            <NavLink to="/menu"> Menu</NavLink>
+          </li>
+          <li>
+            <NavLink to="/shop"> Our Shop</NavLink>
+          </li>
+          {user ? (
+            <li>
+              <button onClick={handleLogout}>Log Out</button>
+            </li>
+          ) : (
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+          )}
+          <li>
+            <NavLink to="/register"> Register</NavLink>
           </li>
           <li tabIndex={0}>
             <a>

@@ -5,10 +5,11 @@ import Items from "../../Shared/Items/Items";
 const FromOurMenu = () => {
   const [popularMenu, setPopularMenu] = useState(null);
   useEffect(() => {
-    fetch("/data/menu.json")
+    fetch("https://bristo-server-ai-abir96.vercel.app/menu")
       .then((res) => res.json())
       .then((result) => {
-        const populerItem = result.filter(
+        console.log(result);
+        const populerItem = result.menuData.filter(
           (item) => item.category === "popular"
         );
         setPopularMenu(populerItem);

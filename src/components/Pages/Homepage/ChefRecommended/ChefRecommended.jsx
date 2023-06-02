@@ -5,10 +5,11 @@ import { SwiperSlide, Swiper } from "swiper/react";
 const ChefRecommended = () => {
   const [offeredItem, setOfferedItem] = useState(null);
   useEffect(() => {
-    fetch("/data/menu.json")
+    fetch("https://bristo-server-ai-abir96.vercel.app/menu")
       .then((res) => res.json())
       .then((result) => {
-        const offered = result.filter(
+        console.log(result);
+        const offered = result.menuData.filter(
           (item) => item.category === "offered"
         );
         setOfferedItem(offered);

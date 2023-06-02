@@ -1,22 +1,28 @@
 import Items from "../../Shared/Items/Items";
 import { useMenuData } from "../../../../utils/hooks/useMenuData";
-import MenuBanner from "../Banner/MenuBanner";
 import MenuSection from "../MenuSection/MenuSection";
 import DessertImg from "/images/menu/dessert-bg.jpeg";
 import PizzaImg from "/images/menu/pizza-bg.jpg";
 import SaladImg from "/images/menu/salad-bg.jpg";
 import SoupImg from "/images/menu/soup-bg.jpg";
 import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
+import SharedBanner from "../../Shared/Banner/SharedBanner";
 const MenuPage = () => {
   const popularItems = useMenuData("popular");
   const dessertItems = useMenuData("dessert");
   const pizzaItems = useMenuData("pizza");
   const saladItems = useMenuData("salad");
   const soupItems = useMenuData("soup");
-
+  const imageURL = "/images/menu/banner3.jpg";
+  const heading = "Our Menu";
+  const description = "Would you like to try a dish?";
   return (
     <div>
-      <MenuBanner />
+      <SharedBanner
+        imageURL={imageURL}
+        head={heading}
+        description={description}
+      />
 
       <div className=" mt-[130px] px-[300px]">
         <SectionHeading
@@ -24,8 +30,8 @@ const MenuPage = () => {
           head={"today's offer"}
         />
         <div className="grid grid-cols-2 gap-10">
-          {popularItems &&
-            popularItems.map((item) => (
+          {popularItems.menuItems &&
+            popularItems.menuItems.map((item) => (
               <Items key={item._id} item={item} />
             ))}
         </div>
@@ -44,8 +50,8 @@ const MenuPage = () => {
       />
       <div className=" mt-[130px] px-[300px]">
         <div className="grid grid-cols-2 gap-10">
-          {dessertItems &&
-            dessertItems.map((item) => (
+          {dessertItems.menuItems &&
+            dessertItems.menuItems.map((item) => (
               <Items key={item._id} item={item} />
             ))}
         </div>
@@ -64,8 +70,8 @@ const MenuPage = () => {
       />
       <div className=" mt-[130px] px-[300px]">
         <div className="grid grid-cols-2 gap-10">
-          {pizzaItems &&
-            pizzaItems.map((item) => (
+          {pizzaItems.menuItems &&
+            pizzaItems.menuItems.map((item) => (
               <Items key={item._id} item={item} />
             ))}
         </div>
@@ -84,8 +90,8 @@ const MenuPage = () => {
       />
       <div className=" mt-[130px] px-[300px]">
         <div className="grid grid-cols-2 gap-10">
-          {saladItems &&
-            saladItems.map((item) => (
+          {saladItems.menuItems &&
+            saladItems.menuItems.map((item) => (
               <Items key={item._id} item={item} />
             ))}
         </div>
@@ -104,8 +110,8 @@ const MenuPage = () => {
       />
       <div className=" mt-[130px] px-[300px]">
         <div className="grid grid-cols-2 gap-10">
-          {soupItems &&
-            soupItems.map((item) => (
+          {soupItems.menuItems &&
+            soupItems.menuItems.map((item) => (
               <Items key={item._id} item={item} />
             ))}
         </div>
