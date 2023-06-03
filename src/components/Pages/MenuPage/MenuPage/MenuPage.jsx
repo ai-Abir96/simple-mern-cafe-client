@@ -7,6 +7,7 @@ import SaladImg from "/images/menu/salad-bg.jpg";
 import SoupImg from "/images/menu/soup-bg.jpg";
 import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
 import SharedBanner from "../../Shared/Banner/SharedBanner";
+import { Link } from "react-router-dom";
 const MenuPage = () => {
   const popularItems = useMenuData("popular");
   const dessertItems = useMenuData("dessert");
@@ -36,9 +37,11 @@ const MenuPage = () => {
             ))}
         </div>
         <div className="my-[45px] text-center">
-          <button className="  uppercase">
-            Order Your Favourite Food
-          </button>
+          <Link to={`/shop`}>
+            <button className="  uppercase">
+              Order Your Favourite Food
+            </button>
+          </Link>
         </div>
       </div>
       <MenuSection
@@ -56,9 +59,11 @@ const MenuPage = () => {
             ))}
         </div>
         <div className="my-[45px] text-center">
-          <button className="  uppercase">
-            Order Your Favourite Food
-          </button>
+          <Link to={`/shop`}>
+            <button className="  uppercase">
+              Order Your Favourite Food
+            </button>
+          </Link>
         </div>
       </div>
       <MenuSection
@@ -76,9 +81,11 @@ const MenuPage = () => {
             ))}
         </div>
         <div className="my-[45px] text-center">
-          <button className="  uppercase">
-            Order Your Favourite Food
-          </button>
+          <Link to={`/shop`}>
+            <button className="  uppercase">
+              Order Your Favourite Food
+            </button>
+          </Link>
         </div>
       </div>
       <MenuSection
@@ -96,9 +103,11 @@ const MenuPage = () => {
             ))}
         </div>
         <div className="my-[45px] text-center">
-          <button className="  uppercase">
-            Order Your Favourite Food
-          </button>
+          <Link to={`/shop`}>
+            <button className="  uppercase">
+              Order Your Favourite Food
+            </button>
+          </Link>
         </div>
       </div>
       <MenuSection
@@ -116,9 +125,11 @@ const MenuPage = () => {
             ))}
         </div>
         <div className="my-[45px] text-center">
-          <button className="  uppercase">
-            Order Your Favourite Food
-          </button>
+          <Link to={`/shop`}>
+            <button className="  uppercase">
+              Order Your Favourite Food
+            </button>
+          </Link>
         </div>
       </div>
     </div>
