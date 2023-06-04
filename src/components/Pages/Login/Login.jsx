@@ -10,15 +10,17 @@ import Swal from "sweetalert2";
 
 const Login = () => {
   const [allowLogin, setAllowLogin] = useState(false);
-  const { login } = useAuth();
+  const { login, googleSignin } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || "/";
+
   useEffect(() => {
     loadCaptchaEnginge(4);
   }, []);
+
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -35,6 +37,7 @@ const Login = () => {
     });
     navigate(from, { replace: true });
   };
+
   const handleValidateCaptcha = (event) => {
     const captchaValue = event.target.value;
     console.log(captchaValue);
@@ -45,6 +48,47 @@ const Login = () => {
       setAllowLogin(false);
     }
   };
+
+  const handleGoogleSignin = () => {
+    googleSignin()
+      .then((result) => {
+        const loggeduser = result.user;
+        console.log(loggeduser);
+
+        const saveUser = {
+          name: loggeduser.displayName,
+          email: loggeduser.email,
+        };
+
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          mode: "cors",
+          body: JSON.stringify(saveUser),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Logged In",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <Link to="/">Back to Home</Link>
@@ -107,6 +151,12 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              <button
+                onClick={handleGoogleSignin}
+                className="btn btn-primary"
+              >
+                Google Sign In
+              </button>
             </div>
           </div>
           <div className="text-center lg:text-left">

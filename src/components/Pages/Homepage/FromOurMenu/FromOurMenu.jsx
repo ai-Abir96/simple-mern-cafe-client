@@ -5,7 +5,7 @@ import Items from "../../Shared/Items/Items";
 const FromOurMenu = () => {
   const [popularMenu, setPopularMenu] = useState(null);
   useEffect(() => {
-    fetch("https://bristo-server-ai-abir96.vercel.app/menu")
+    fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((result) => {
         console.log(result);

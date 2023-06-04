@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import useAddCart from "../../../../utils/hooks/useAddCart";
+import useAddCart from "../../../../../utils/hooks/useAddCart";
 
 const CartItems = () => {
   const { cart, refetch } = useAddCart();
@@ -13,10 +13,9 @@ const CartItems = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://bristo-server-ai-abir96.vercel.app/cart/${id}`,
-          { method: "DELETE" }
-        )
+        fetch(`http://localhost:5000/cart/${id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((result) => {
             if (result.result.deletedCount > 0) {

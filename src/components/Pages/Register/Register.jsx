@@ -1,19 +1,54 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../utils/hooks/useAuth";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
+    reset,
     // formState: { errors },
   } = useForm();
-  const { createUser } = useAuth();
+  const { createUser, updateUserData } = useAuth();
+
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
+
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
+
+      updateUserData(loggedUser, data.name, data.photoURL).then(
+        () => {
+          console.log(data.name, data.photoURL);
+          const saveUser = { name: data.name, email: data.email };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              console.log(result.result.insertedId);
+              if (result.result.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "Successfully Registered",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
+              navigate("/");
+            });
+        }
+      );
     });
   };
 

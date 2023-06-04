@@ -11,7 +11,7 @@ const useAddCart = () => {
     queryKey: ["cart", user?.email],
     queryFn: async () => {
       const res = await fetch(
-        `https://bristo-server-ai-abir96.vercel.app/carts?email=${user?.email}`
+        `http://localhost:5000/carts?email=${user?.email}`
       );
       const result = res.json();
       return result;

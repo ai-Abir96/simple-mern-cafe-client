@@ -1,4 +1,4 @@
-import useAddCart from "../../../../utils/hooks/useAddCart";
+import useAddCart from "../../../../../utils/hooks/useAddCart";
 import CartItems from "../CartItems/CartItems";
 
 const MyCart = () => {

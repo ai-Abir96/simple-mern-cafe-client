@@ -6,8 +6,18 @@ import OurShop from "../components/Pages/OurShop/OurShop/OurShop";
 import Login from "../components/Pages/Login/Login";
 import Register from "../components/Pages/Register/Register";
 import Dashboard from "../components/Layout/Dashboard";
-import MyCart from "../components/Pages/Dashboard/MyCart/MyCart";
 import PrivateRoute from "./PrivateRoute";
+import AddItems from "../components/Pages/Dashboard/Admin/AddItems/AddItems";
+import ManageItems from "../components/Pages/Dashboard/Admin/ManageItems/ManageItems";
+import ManageBookings from "../components/Pages/Dashboard/Admin/ManageBookings/ManageBookings";
+import AllUsers from "../components/Pages/Dashboard/Admin/AllUsers/AllUsers";
+import Reservations from "../components/Pages/Dashboard/User/Reservations/Reservations";
+import Payment from "../components/Pages/Dashboard/User/Payment/Payment";
+import AddReview from "../components/Pages/Dashboard/User/Review/AddReview";
+import MyBooking from "../components/Pages/Dashboard/User/MyBooking/MyBooking";
+import AdminHome from "../components/Pages/Dashboard/Admin/AdminHome/AdminHome";
+import UserHome from "../components/Pages/Dashboard/User/UserHome/UserHome";
+import MyCart from "../components/Pages/Dashboard/User/MyCart/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -49,8 +59,48 @@ export const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard/mycart",
+        path: "/dashboard/@dm1n/home",
+        element: <AdminHome />,
+      },
+      {
+        path: "/dashboard/@dm1n/add-items",
+        element: <AddItems />,
+      },
+      {
+        path: "/dashboard/@dm1n/manage/items",
+        element: <ManageItems />,
+      },
+      {
+        path: "/dashboard/@dm1n/manage/bookings",
+        element: <ManageBookings />,
+      },
+      {
+        path: "/dashboard/@dm1n/all-users",
+        element: <AllUsers />,
+      },
+      {
+        path: "/dashboard/user/home",
+        element: <UserHome />,
+      },
+      {
+        path: "/dashboard/user/reservation",
+        element: <Reservations />,
+      },
+      {
+        path: "/dashboard/user/payment",
+        element: <Payment />,
+      },
+      {
+        path: "/dashboard/user/cart",
         element: <MyCart />,
+      },
+      {
+        path: "/dashboard/user/review",
+        element: <AddReview />,
+      },
+      {
+        path: "/dashboard/user/booking",
+        element: <MyBooking />,
       },
     ],
   },

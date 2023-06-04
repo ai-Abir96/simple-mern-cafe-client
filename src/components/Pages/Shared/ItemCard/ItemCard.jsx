@@ -19,7 +19,7 @@ const ItemCard = (props) => {
       email: user.email,
     };
     if (user && user.email) {
-      fetch("https://bristo-server-ai-abir96.vercel.app/carts", {
+      fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
