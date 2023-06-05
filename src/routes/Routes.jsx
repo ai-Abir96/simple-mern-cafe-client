@@ -18,6 +18,7 @@ import MyBooking from "../components/Pages/Dashboard/User/MyBooking/MyBooking";
 import AdminHome from "../components/Pages/Dashboard/Admin/AdminHome/AdminHome";
 import UserHome from "../components/Pages/Dashboard/User/UserHome/UserHome";
 import MyCart from "../components/Pages/Dashboard/User/MyCart/MyCart";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -60,23 +61,43 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/@dm1n/home",
-        element: <AdminHome />,
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/@dm1n/add-items",
-        element: <AddItems />,
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/@dm1n/manage/items",
-        element: <ManageItems />,
+        element: (
+          <AdminRoute>
+            <ManageItems />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/@dm1n/manage/bookings",
-        element: <ManageBookings />,
+        element: (
+          <AdminRoute>
+            <ManageBookings />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/@dm1n/all-users",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
       },
       {
         path: "/dashboard/user/home",

@@ -8,7 +8,6 @@ export const useMenuData = (item) => {
     fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         const filteredItem = result.menuData.filter(
           (r) => r.category === item
         );
@@ -17,6 +16,5 @@ export const useMenuData = (item) => {
       });
   }, [item]);
 
-  console.log(menuItems);
   return { menuItems, isLoading };
 };

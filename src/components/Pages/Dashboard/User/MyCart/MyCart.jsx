@@ -3,7 +3,6 @@ import CartItems from "../CartItems/CartItems";
 
 const MyCart = () => {
   const { cart } = useAddCart();
-  console.log(cart);
   const totalPrice = cart?.cartData
     ?.reduce((sum, item) => {
       console.log(item.price);

@@ -1,4 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
+import useCheckAdmin from "../../utils/hooks/useCheckAdmin";
 
 const adminDashboard = (
   <>
@@ -45,7 +46,8 @@ const userDashboard = (
 );
 
 const Dashboard = () => {
-  const isAdmin = true;
+  // const isAdmin = true;
+  const { isAdmin } = useCheckAdmin();
   return (
     <div className="drawer lg:drawer-mobile">
       <input

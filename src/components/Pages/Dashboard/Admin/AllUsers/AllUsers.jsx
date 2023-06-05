@@ -2,13 +2,16 @@ import { faUserShield } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../../../utils/hooks/useAxiosSecure";
 
 const AllUsers = () => {
+  const { axiosSecure } = useAxiosSecure();
   const { data: users = [], refetch } = useQuery(
     ["users"],
     async () => {
-      const res = await fetch("http://localhost:5000/users");
-      const result = res.json();
+      const res = await axiosSecure.get("/getusers");
+      console.log(res);
+      const result = res.data;
       return result;
     }
   );
@@ -40,7 +43,33 @@ const AllUsers = () => {
       }
     });
   };
-  const handleRole = () => {};
+  const handleRole = (id) => {
+    Swal.fire({
+      title: "Are you sure? You want to make this User Admin?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/user/admin/${id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            if (result.result.modifiedCount > 0) {
+              refetch();
+              Swal.fire({
+                icon: "success",
+                title: "User is admin now",
+                timer: 1500,
+              });
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="overflow-x-auto overflow-y-auto w-full">
       <table className="table">

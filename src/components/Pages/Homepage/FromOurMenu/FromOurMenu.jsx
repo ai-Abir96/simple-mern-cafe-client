@@ -3,19 +3,18 @@ import SectionHeading from "../../Shared/SectionHeading/SectionHeading";
 import Items from "../../Shared/Items/Items";
 
 const FromOurMenu = () => {
-  const [popularMenu, setPopularMenu] = useState(null);
+  const [popularMenu, setPopularMenu] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         const populerItem = result.menuData.filter(
           (item) => item.category === "popular"
         );
         setPopularMenu(populerItem);
       });
   }, []);
-  console.log(popularMenu);
+
   return (
     <div>
       <SectionHeading

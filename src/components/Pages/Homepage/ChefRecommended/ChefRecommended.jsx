@@ -8,7 +8,6 @@ const ChefRecommended = () => {
     fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
         const offered = result.menuData.filter(
           (item) => item.category === "offered"
         );

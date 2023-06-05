@@ -65,7 +65,6 @@ const Login = () => {
           headers: {
             "content-type": "application/json",
           },
-          mode: "cors",
           body: JSON.stringify(saveUser),
         })
           .then((res) => res.json())
